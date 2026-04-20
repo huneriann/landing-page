@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ilkin Hashimzada | Software Engineer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-dark: #0f172a;
+            --bg-card: #1e293b;
+            --accent: #38bdf8;
+            --accent-hover: #0ea5e9;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            line-height: 1.7;
+        }
+
+        /* Navigation */
+        nav {
+            background-color: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            padding: 1.2rem 5%;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        nav h1 {
+            color: var(--text-main);
+            font-size: 1.4rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        nav h1 span {
+            color: var(--accent);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2.5rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-muted);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--accent);
+        }
+
+        /* Hero Section */
+        #home {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 0 10%;
+            background: radial-gradient(circle at 10% 50%, rgba(56, 189, 248, 0.05) 0%, transparent 50%);
+        }
+
+        .hero-subtitle {
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 1rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+        }
+
+        #home h2 {
+            font-size: 4rem;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            color: var(--text-main);
+        }
+
+        #home p {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            max-width: 650px;
+            margin-bottom: 2.5rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 28px;
+            background-color: var(--accent);
+            color: var(--bg-dark);
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 1px solid var(--accent);
+        }
+
+        .btn:hover {
+            background-color: transparent;
+            color: var(--accent);
+            box-shadow: 0 0 15px rgba(56, 189, 248, 0.3);
+        }
+
+        /* Sections General */
+        section {
+            padding: 6rem 10%;
+        }
+
+        .section-title {
+            font-size: 2.2rem;
+            color: var(--text-main);
+            margin-bottom: 3rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .section-title::after {
+            content: "";
+            height: 1px;
+            flex-grow: 1;
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        /* About Section */
+        .about-content p {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            margin-bottom: 1.5rem;
+            max-width: 800px;
+        }
+
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 2rem;
+        }
+
+        .skill-tag {
+            background-color: rgba(56, 189, 248, 0.1);
+            padding: 8px 15px;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            color: var(--accent);
+            border: 1px solid rgba(56, 189, 248, 0.2);
+            transition: all 0.3s ease;
+            font-weight: bold;
+        }
+
+        .skill-tag:hover {
+            background-color: rgba(56, 189, 248, 0.2);
+            transform: translateY(-2px);
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: var(--bg-card);
+            border-radius: 12px;
+            padding: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: transform 0.3s ease, border-color 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(56, 189, 248, 0.3);
+        }
+
+        .project-header h3 {
+            color: var(--text-main);
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .project-header h3 i {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+
+        .project-desc {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+
+        .project-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .project-footer a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .project-footer a:hover {
+            text-decoration: underline;
+        }
+
+        .tech-stack {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .tech-stack span {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+        }
+
+        .lang-csharp {
+            background-color: #178600;
+        }
+
+        /* Experience Section */
+        .timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            position: relative;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 2px;
+            background-color: var(--bg-card);
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-left: 2.5rem;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -5px;
+            top: 6px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: var(--accent);
+            box-shadow: 0 0 10px var(--accent);
+        }
+
+        .timeline-card {
+            background: var(--bg-card);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .timeline-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(56, 189, 248, 0.3);
+        }
+
+        .timeline-card h3 {
+            color: var(--text-main);
+            font-size: 1.3rem;
+            margin-bottom: 0.2rem;
+        }
+
+        .timeline-card h4 {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            font-weight: 400;
+            margin-bottom: 1rem;
+        }
+
+        .timeline-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* Contact Section */
+        #contact {
+            background: linear-gradient(to top, var(--bg-card) 0%, var(--bg-dark) 100%);
+        }
+
+        #contact .section-title::before,
+        #contact .section-title::after {
+            content: "";
+            height: 1px;
+            flex-grow: 1;
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .contact-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 1.5rem;
+        }
+
+        .contact-details {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 1rem;
+            font-size: 1.1rem;
+            color: var(--text-muted);
+        }
+
+        .contact-details p {
+            display: flex;
+            align-items: center;
+        }
+
+        .contact-details i,
+        .contact-links a i {
+            width: 35px;
+            text-align: center;
+            margin-right: 15px;
+            font-size: 1.4rem;
+        }
+
+        .contact-details i {
+            color: var(--accent);
+        }
+
+        .contact-links {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+
+        .contact-links a {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .contact-links a i {
+            font-size: 1.5rem;
+            color: var(--text-muted);
+            transition: color 0.3s ease;
+        }
+
+        .contact-links a:hover {
+            color: var(--accent);
+            transform: translateX(5px);
+        }
+
+        .contact-links a:hover i {
+            color: var(--accent);
+            text-shadow: 0 0 15px rgba(56, 189, 248, 0.4);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background-color: var(--bg-dark);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            #home h2 {
+                font-size: 2.5rem;
+            }
+
+            nav ul {
+                display: none;
+            }
+
+            section {
+                padding: 4rem 5%;
+            }
+
+            .contact-links a {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <h1>Ilkin Hashimzada<span>.</span></h1>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <section id="home">
+        <span class="hero-subtitle">Software Engineer</span>
+        <h2>Building <br>everything.</h2>
+        <p>I build literally everything—backend, frontend, mobile, and desktop. Basically, if it runs on electricity and
+            needs code, I can write it (and rescue the legacy spaghetti along the way).</p>
+        <a href="#projects" class="btn">Explore My Work</a>
+    </section>
+
+    <section id="about">
+        <h2 class="section-title">About Me</h2>
+        <div class="about-content">
+            <p>I’ve spent the last 5+ years rescuing high-volume banking systems from the clutches of legacy code and
+                transforming them into blazing-fast modern applications. I speak C# fluently, and
+                survive on coffee, and complex Business Process Management (BPM) workflows.</p>
+            <p>Whether it's untangling enterprise spaghetti code, handling credit card operations, or building semantic
+                vector search engines that actually find what you're looking for, I make sure the digital gears don't
+                grind to a halt.</p>
+
+            <div class="skills-list">
+                <span class="skill-tag">C#</span>
+                <span class="skill-tag">Java (EE/SE/Spring)</span>
+                <span class="skill-tag">JavaScript</span>
+                <span class="skill-tag">Ruby</span>
+                <span class="skill-tag">Dart</span>
+
+                <span class="skill-tag">.NET</span>
+                <span class="skill-tag">ASP.NET Core</span>
+                <span class="skill-tag">Ruby on Rails</span>
+                <span class="skill-tag">Flutter</span>
+                <span class="skill-tag">WinForms</span>
+                <span class="skill-tag">WPF</span>
+                <span class="skill-tag">.NET MAUI (iOS/Android)</span>
+                <span class="skill-tag">Avalonia UI</span>
+                <span class="skill-tag">PostgreSQL</span>
+                <span class="skill-tag">Microsoft SQL Server</span>
+                <span class="skill-tag">MySQL</span>
+                <span class="skill-tag">MongoDB</span>
+                <span class="skill-tag">Oracle SQL</span>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <h2 class="section-title">Open Source & Repositories</h2>
+        <div class="projects-grid">
+
+            <div class="project-card">
+                <div class="project-header">
+                    <h3><i class="far fa-folder-open"></i> SharpCLI</h3>
+                </div>
+                <div class="project-desc">
+                    A robust, efficient command-line interface tool built with C# and .NET. Designed to streamline
+                    developer workflows and automate complex tasks from the terminal.
+                </div>
+                <div class="project-footer">
+                    <div class="tech-stack">
+                        <span class="lang-csharp"></span> C#
+                    </div>
+                    <a href="https://github.com/huneriann/SharpCLI" target="_blank">View Code <i
+                            class="fas fa-arrow-right" style="font-size: 0.8rem; margin-left: 5px;"></i></a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="experience">
+        <h2 class="section-title">Experience</h2>
+        <div class="timeline">
+
+            <div class="timeline-item">
+                <div class="timeline-card">
+                    <h3>Software Engineer</h3>
+                    <h4>Yelo Bank &nbsp;|&nbsp; August 2025 - Present</h4>
+                    <p>Currently serving as a Software Engineer delivering robust fintech solutions within the Baku
+                        Economic Zone.</p>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-card">
+                    <h3>Software Engineer</h3>
+                    <h4>Kapital Bank OJSC &nbsp;|&nbsp; November 2020 - July 2025</h4>
+                    <p>Developed comprehensive BPM solutions for BirKart credit card operations and end-to-end mortgage
+                        systems with automated lead routing (Asan Finance, IAMAS). Engineered core BPM modules for CRM
+                        and ABS adapters, driving successful legacy upgrades and service migrations to ASP.NET 5+
+                        platforms.</p>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-card">
+                    <h3>Software Engineer</h3>
+                    <h4>Baku Convention Center &nbsp;|&nbsp; May 2024 - December 2024</h4>
+                    <p>Provided ongoing system updates, security maintenance, and backend support for the official
+                        website built on the Ruby on Rails framework.</p>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-card">
+                    <h3>Programming Instructor</h3>
+                    <h4>Developia Engineering &nbsp;|&nbsp; February 2020 - June 2021</h4>
+                    <p>Delivered foundational programming instruction in Java, HTML, CSS, JavaScript, and MySQL to
+                        children aged 7-14, fostering practical skills in web development.</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2 class="section-title">Get In Touch</h2>
+
+        <div class="contact-wrapper">
+            <div class="contact-details">
+                <p><i class="fas fa-map-marker-alt" title="Location"></i> Baku City, Baku Economic Zone, Azerbaijan</p>
+                <p><i class="fas fa-clock" title="Timezone"></i> Timezone: GMT+4</p>
+            </div>
+
+            <div class="contact-links">
+                <a href="mailto:hashimzadailkin@gmail.com" title="Email Me">
+                    <i class="fas fa-envelope"></i> hashimzadailkin@gmail.com
+                </a>
+                <a href="https://www.linkedin.com/in/ilkinhashimzada" target="_blank" title="LinkedIn Profile">
+                    <i class="fab fa-linkedin"></i> linkedin/ilkinhashimzada
+                </a>
+                <a href="https://github.com/huneriann" target="_blank" title="GitHub Profile">
+                    <i class="fab fa-github"></i> github/huneriann
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Ilkin Hashimzada. No spaghetti code here.</p>
+    </footer>
+
+</body>
+
+</html>
